@@ -273,6 +273,46 @@ a:hover {
 }
 
 
+/* RI Family simple mobile list */
+@media (max-width: 600px) {
+  .ri-family-carousel, .ri-family-flex {
+    display: block;
+    margin: var(--space-m) 0;
+  }
+  .ri-family-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: var(--space-s) 0;
+    min-width: 0;
+    max-width: none;
+    box-shadow: none;
+    border-radius: 0;
+    background: none;
+    margin: 0;
+  }
+  .ri-family-item .logo-icon {
+    margin: 0 var(--space-s) 0 0;
+  }
+  .ri-family-item .logo-icon svg {
+    height: 2.2rem;
+    width: auto;
+    margin: 0;
+  }
+  .ri-family-item .logo-text {
+    font-size: 1.1rem;
+    font-family: var(--font-head);
+    line-height: 1.1;
+    text-align: left;
+    color: var(--primary-text);
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-xs);
+  }
+}
+
+
+
 /* Responsive */
 @media (max-width: 1050px) {
   .menu-toggle {
