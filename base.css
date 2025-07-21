@@ -1,0 +1,214 @@
+/* Base resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Page & typography */
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  background: var(--primary-bg);
+  color: var(--primary-text);
+}
+
+/* Containers */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.full-width {
+  width: 100%;
+}
+
+/* Sticky header */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-m) 0;
+  background: var(--primary-bg);
+  transition: padding var(--dur-medium) var(--ease), box-shadow var(--dur-medium) var(--ease);
+}
+
+/* Shrink header when scrolled */
+.site-header.scrolled {
+  padding: 0.5rem 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Shrink logo on scroll */
+.site-header.scrolled .logo-icon svg {
+  height: 2.5rem;
+}
+.site-header.scrolled .logo-text {
+  font-size: 1.25rem;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-s);
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+.logo:hover .logo-icon svg {
+  stroke: var(--accent-2);
+}
+.logo-icon svg {
+  height: 4rem;
+  width: auto;
+}
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-head);
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--primary-text);
+}
+
+/* Navigation */
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: var(--space-l);
+}
+.nav-list a {
+  font-weight: 500;
+  color: var(--primary-text);
+  transition: color var(--dur-short) var(--ease);
+}
+.nav-list a:hover {
+  color: var(--accent-1);
+}
+
+/* Sections */
+.section {
+  background: var(--white);
+  padding: var(--space-l);
+  margin: var(--space-l) 0;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  scroll-margin-top: var(--header-offset);
+}
+h1, h2, h3 {
+  font-family: var(--font-head);
+  color: var(--primary-text);
+  margin-bottom: var(--space-m);
+}
+h1 { font-size: 2.5rem; line-height: 1.2; }
+h2 { font-size: 2rem;   line-height: 1.3; }
+h3 { font-size: 1.5rem; line-height: 1.4; }
+p { margin-bottom: var(--space-m); }
+
+/* Links */
+a {
+  text-decoration: none;
+  transition: opacity var(--dur-short) var(--ease);
+  color: var(--accent-1);
+}
+a:hover {
+  opacity: 0.8;
+}
+.accent-link {
+  color: var(--accent-1);
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-block;
+  background: var(--accent-1);
+  color: var(--white);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  transition: background var(--dur-short) var(--ease), opacity var(--dur-short) var(--ease);
+}
+.btn-primary:hover {
+  background: var(--accent-2);
+  opacity: 0.9;
+}
+.btn-secondary {
+  display: inline-block;
+  background: transparent;
+  border: 2px solid var(--primary-text);
+  color: var(--primary-text);
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-weight: 500;
+  transition: background var(--dur-short) var(--ease), color var(--dur-short) var(--ease);
+}
+.btn-secondary:hover {
+  background: var(--white);
+  color: var(--primary-bg);
+}
+
+/* Burger toggle */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: auto;
+  width: 3rem;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+.burger {
+  position: relative;
+  width: 24px;
+  height: 2px;
+  background: var(--primary-text);
+}
+.burger::before,
+.burger::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background: var(--primary-text);
+}
+.burger::before { top: -8px; }
+.burger::after  { top:  8px; }
+
+/* Responsive */
+@media (max-width: 1050px) {
+  .menu-toggle {
+    display: flex;
+  }
+  .nav-list {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--primary-bg);
+    padding: var(--space-m);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  .nav-list.open {
+    display: flex;
+  }
+}
+
+/* Footer */
+.site-footer {
+  background: var(--primary-text);
+  color: var(--primary-bg);
+  text-align: center;
+  padding: var(--space-m) 0;
+  font-size: 0.875rem;
+}
