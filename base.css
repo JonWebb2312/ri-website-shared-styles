@@ -148,7 +148,7 @@ a:hover {
   transition: background var(--dur-short) var(--ease), color var(--dur-short) var(--ease);
 }
 .btn-secondary:hover {
-  background: var(--white);
+  background: var(--accent-2);
   color: var(--primary-bg);
 }
 
