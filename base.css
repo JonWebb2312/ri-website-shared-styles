@@ -204,6 +204,14 @@ a:hover {
   }
 }
 
+@media (min-width: 1051px) {
+  /* Make each nav item center its children vertically */
+  .nav-list li {
+    display: flex;
+    align-items: center;
+  }
+}
+
 /* Footer */
 .site-footer {
   background: var(--primary-text);
