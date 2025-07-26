@@ -39,7 +39,7 @@ body {
 
 /* Shrink header when scrolled */
 .site-header.scrolled {
-  padding: 0.5rem 0;
+  padding: 0.5rem var(--space-m); /* 0.5rem top/bottom, 1rem left/right */
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
@@ -244,7 +244,7 @@ a:hover {
   color: var(--primary-text);
   line-height: 1.1;
 }
-@media (max-width: 900px) {
+@media (max-width: 1050px) {
   .ri-family-flex {
     gap: var(--space-l);
   }
@@ -259,7 +259,7 @@ a:hover {
     font-size: 1.1rem;
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 1050px) {
   .ri-family-flex {
     flex-direction: column;
     align-items: center;
@@ -274,7 +274,7 @@ a:hover {
 
 
 /* RI Family simple mobile list */
-@media (max-width: 600px) {
+@media (max-width: 1050px) {
   .ri-family-carousel, .ri-family-flex {
     display: block;
     margin: var(--space-m) 0;
@@ -324,7 +324,7 @@ a:hover {
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 100%;
+    top: var(--nav-height);
     right: 0;
     background: var(--primary-bg);
     padding: var(--space-m);
@@ -335,7 +335,7 @@ a:hover {
   }
 }
 
-@media (min-width: 1051px) {
+@media (min-width: 1050px) {
   /* Make each nav item center its children vertically */
   .nav-list li {
     display: flex;
@@ -350,4 +350,157 @@ a:hover {
   text-align: center;
   padding: var(--space-m) 0;
   font-size: 0.875rem;
+}
+
+/* Journal Updates: two‑box card layout */
+#journal-updates {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+}
+
+/* Each update becomes a flex container */
+#journal-updates .update {
+  display: flex;
+  background: var(--primary-bg);
+  padding: var(--space-m);
+  border-radius: 0.5rem;
+  gap: var(--space-l);
+  align-items: center;
+}
+
+/* Left box: text stack */
+#journal-updates .update-text {
+  flex: 1; /* take all available width */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+}
+
+/* Right box: the button */
+#journal-updates .update-action {
+  flex: 0 0 auto; /* only as big as its content */
+}
+
+/* Ensure headings/text keep their previous styles */
+#journal-updates h3,
+#journal-updates h4,
+#journal-updates p {
+  margin: 0;
+}
+
+/* Desktop: side‑by‑side (default) */
+
+/* Mobile: stack text above button */
+@media (max-width: 600px) {
+  #journal-updates .update {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  /* Put some breathing room between text and button */
+  #journal-updates .update-action {
+    margin-top: var(--space-m);
+    display: flex;
+    justify-content: flex-start;
+  }
+}
+
+
+/* ==== Tone Selector (global) ==== */
+
+/* Hide all tone blocks by default */
+.tone-section {
+  display: none;
+}
+
+/* Show only the active tone block */
+.tone-section.active {
+  display: block;
+}
+
+/* Tone selector dropdown */
+.tone-selector {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-s);
+}
+.tone-selector label {
+  font-weight: 500;
+  color: var(--primary-text);
+}
+.tone-selector select {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: var(--space-xs) var(--space-s);
+  border: 1px solid var(--muted);
+  border-radius: 0.25rem;
+  background: var(--primary-bg);
+  color: var(--primary-text);
+  transition: border-color var(--dur-short) var(--ease);
+}
+.tone-selector select:focus {
+  outline: none;
+  border-color: var(--accent-1);
+}
+
+/* Make header a wrapping flex container */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Logo stays first */
+.site-header .logo {
+  order: 1;
+}
+
+/* Tone selector becomes its own “row” below the logo */
+.tone-selector {
+  order: 3;
+  flex-basis: 100%;
+  margin: var(--space-s) 0;       /* vertical spacing */
+  justify-content: flex-start;    /* align left under the logo */
+  margin-left: 0;                 /* override any auto margins */
+}
+
+/* Nav comes last */
+.site-header nav {
+  order: 2;
+}
+
+@media (max-width: 1050px) {
+  .site-header {
+    flex-wrap: wrap;
+  }
+
+  /* 1. Logo: first, natural width */
+  .site-header .logo {
+    order: 1;
+    flex: 0 1 auto;
+    margin: 0;
+  }
+
+  /* 2. Nav: next, natural width */
+  .site-header nav {
+    order: 2;
+    flex: 0 1 auto;
+    display: flex; /* preserve horizontal or burger behavior */
+  }
+
+  /* 3. Burger toggle: last in row, pushes itself to the right */
+  .menu-toggle {
+    order: 3;
+    flex: 0 1 auto;
+    margin-left: auto;  /* pushes toggle to far right */
+  }
+
+  /* 4. Tone selector: full width on its own row */
+  .tone-selector {
+    order: 4;
+    flex: 1 1 100%;
+    margin: var(--space-s) 0;
+    justify-content: flex-start;
+  }
 }
